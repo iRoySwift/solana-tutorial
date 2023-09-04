@@ -25,7 +25,6 @@ export default {
     ],
     modulePaths: [],
     moduleNameMapper: {
-        "^uuid$": require.resolve("uuid"),
         "^react-native$": "react-native-web",
         "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
     },
