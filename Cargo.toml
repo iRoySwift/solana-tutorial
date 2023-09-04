@@ -1,6 +1,7 @@
 [workspace]
 
 members = [
-    "hellow-world/program",
-    "hellow-world-struct/program",
+    "hello-world/program",
+    "hello-world-struct/program",
+    "hello-world-notebook/program",
 ]
