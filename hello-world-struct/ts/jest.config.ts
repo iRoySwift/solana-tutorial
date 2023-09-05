@@ -19,7 +19,6 @@ export default {
         //         "<rootDir>/config/jest/fileTransform.js",
     },
     transformIgnorePatterns: [
-        "/node_modules/(?!(uuid|xxx)/)",
         "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
         "^.+\\.module\\.(css|sass|scss)$",
     ],

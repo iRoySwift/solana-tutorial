@@ -1,11 +1,10 @@
 //! Program instruction
 
-use borsh::{BorshDeserialize, BorshSerialize};
+use borsh::{BorshDeserialize, BorshSchema, BorshSerialize};
 
-#[derive(BorshSerialize, BorshDeserialize, Debug)]
+#[derive(Clone, Debug, BorshSerialize, BorshDeserialize, PartialEq, BorshSchema)]
 pub enum GreatingAccountInstruction {
-    Greeting {
-        // greeted account
-        counter: u32,
-    },
+    Create(String),
+    Modify(String),
+    Delete,
 }
