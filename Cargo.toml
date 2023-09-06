@@ -2,6 +2,8 @@
 
 members = [
     "hello-world/program",
+    "hello-world/cli",
     "hello-world-struct/program",
     "hello-world-notebook/program",
 ]
+exclude = []
