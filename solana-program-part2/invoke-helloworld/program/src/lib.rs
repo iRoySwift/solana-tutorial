@@ -33,5 +33,5 @@ pub fn process_instruction(
     );
 
     let account_infos = [account.clone()];
-    invoke(&instruction, &account_infos)
+    invoke(&instruction, &account_infos[..])
 }
