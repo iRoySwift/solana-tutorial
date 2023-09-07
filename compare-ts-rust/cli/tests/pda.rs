@@ -8,7 +8,7 @@ const WALLET: &str = "6VX7znCYutpN4z4kyRA6B8uXiK6iPN799efjGr8m3rFX";
 const TOKEN_PROGRAM_ID: &str = "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA";
 const ASSOCIATED_TOKEN_PROGRAM_ID: &str = "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL";
 
-// cargo test -p compare-ts-rust --test get_associated_token_address_sync
+// cargo test -p compare-ts-rust --test pda
 #[test]
 fn get_associated_token_address_sync() {
     let token_mint_address = Pubkey::from_str(MINT).unwrap();
