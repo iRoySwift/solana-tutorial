@@ -9,5 +9,6 @@ members = [
     "hello-world-notebook/program",
     "solana-program-part2/compare-ts-rust/cli",
     "solana-program-part2/invoke-helloworld/cli",
+    "solana-program-part2/invoke-helloworld/program"
 ]
 exclude = []
