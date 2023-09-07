@@ -789,16 +789,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "cli"
-version = "0.1.0"
-dependencies = [
- "borsh 0.10.3",
- "solana-program",
- "solana-rpc-client",
- "solana-sdk",
-]
-
-[[package]]
 name = "combine"
 version = "3.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -812,7 +802,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "compare-ts-rust"
+name = "compare-ts-rust-cli"
 version = "0.1.0"
 dependencies = [
  "solana-program",
@@ -1597,9 +1587,37 @@ checksum = "95505c38b4572b2d910cecb0281560f54b440a19336cbbcb27bf6ce6adc6f5a8"
 name = "hello-world"
 version = "0.1.0"
 dependencies = [
+ "solana-program",
+ "solana-sdk",
+]
+
+[[package]]
+name = "hello-world-cli"
+version = "0.1.0"
+dependencies = [
+ "borsh 0.10.3",
+ "solana-program",
+ "solana-rpc-client",
+ "solana-sdk",
+]
+
+[[package]]
+name = "hello-world-counter"
+version = "0.1.0"
+dependencies = [
  "borsh 0.10.3",
  "solana-program",
  "solana-program-test",
+ "solana-sdk",
+]
+
+[[package]]
+name = "hello-world-couter-cli"
+version = "0.1.0"
+dependencies = [
+ "borsh 0.10.3",
+ "solana-program",
+ "solana-rpc-client",
  "solana-sdk",
 ]
 
@@ -1855,6 +1873,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7a5bbe824c507c5da5956355e86a746d82e0e1464f65d862cc5e71da70e94b2c"
 dependencies = [
  "cfg-if",
+]
+
+[[package]]
+name = "invoke-helloworld-cli"
+version = "0.1.0"
+dependencies = [
+ "borsh 0.10.3",
+ "solana-program",
+ "solana-rpc-client",
+ "solana-sdk",
 ]
 
 [[package]]
@@ -5056,9 +5084,9 @@ checksum = "6a02e4885ed3bc0f2de90ea6dd45ebcbb66dacffe03547fadbb0eeae2770887d"
 
 [[package]]
 name = "walkdir"
-version = "2.3.3"
+version = "2.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "36df944cda56c7d8d8b7496af378e6b16de9284591917d307c9b4d313c44e698"
+checksum = "d71d857dc86794ca4c280d616f7da00d2dbfd8cd788846559a6813e6aa4b54ee"
 dependencies = [
  "same-file",
  "winapi-util",

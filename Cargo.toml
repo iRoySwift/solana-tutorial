@@ -3,8 +3,11 @@
 members = [
     "hello-world/program",
     "hello-world/cli",
+    "hello-world-counter/program",
+    "hello-world-counter/cli",
     "hello-world-struct/program",
     "hello-world-notebook/program",
-    "solana-program-part2/compare-ts-rust/cli"
+    "solana-program-part2/compare-ts-rust/cli",
+    "solana-program-part2/invoke-helloworld/cli",
 ]
 exclude = []
