@@ -1,7 +1,7 @@
 import { describe, it } from "node:test";
 import dotenv from "dotenv";
 import { Connection, Keypair, PublicKey, clusterApiUrl } from "@solana/web3.js";
-import { getAssociatedTokenAddressSync } from "./../utils/PDA.js";
+import { getAssociatedTokenAddressSync } from "../utils/PDA.js";
 import assert from "assert";
 
 dotenv.config();

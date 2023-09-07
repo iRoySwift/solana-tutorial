@@ -5,6 +5,6 @@ members = [
     "hello-world/cli",
     "hello-world-struct/program",
     "hello-world-notebook/program",
-    "compare-ts-rust/cli"
+    "solana-program-part2/compare-ts-rust/cli"
 ]
 exclude = []
