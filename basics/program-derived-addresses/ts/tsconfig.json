@@ -8,7 +8,7 @@
         "resolveJsonModule": true,
         "esModuleInterop": true,
         "noEmit": true,
-        // "allowImportingTsExtensions": true,
+        "allowImportingTsExtensions": true,
         // "verbatimModuleSyntax": true,
         "forceConsistentCasingInFileNames": true,
         "alwaysStrict": true,
@@ -28,6 +28,9 @@
         "skipLibCheck": true,
         "jsx": "react-jsx",
         "noFallthroughCasesInSwitch": true
+    },
+    "ts-node": {
+        "esm": true
     },
     "include": ["src", "src/tests/Hello.test.ts"],
     "exclude": ["node_modules", ".vscode"],
