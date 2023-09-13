@@ -1,0 +1,26 @@
+{
+    "name": "ts",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "ts-node ./src/tests/Mint.test.ts"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^20.5.9",
+        "dotenv": "^16.3.1",
+        "eslint-config-prettier": "^9.0.0",
+        "eslint-plugin-prettier": "^5.0.0",
+        "prettier": "^3.0.3",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.2.2"
+    },
+    "dependencies": {
+        "@solana/spl-token": "^0.3.8",
+        "@solana/web3.js": "^1.78.4",
+        "borsh": "0.7.0"
+    }
+}

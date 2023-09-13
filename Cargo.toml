@@ -7,9 +7,11 @@ members = [
     "hello-world-counter/cli",
     "hello-world-struct/program",
     "hello-world-notebook/program",
+    "basics/program-derived-addresses/program",
     "solana-program-part2/compare-ts-rust/cli",
     "solana-program-part2/invoke-helloworld/cli",
     "solana-program-part2/invoke-helloworld/program",
-    "basics/program-derived-addresses/program"
+    "solana-program-part2/mint-token-info/cli",
+    "solana-program-part2/mint-token-info/program",
 ]
 exclude = []
