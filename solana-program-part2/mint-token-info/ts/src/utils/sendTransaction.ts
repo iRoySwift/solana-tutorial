@@ -56,7 +56,7 @@ async function createAndSendV0Tx(
     console.log("   ✅ - 3. Transaction Signed");
 
     // * Step 4 - Send our v0 transaction to the cluster
-    const txid = await connection.sendTransaction(transaction, {
+    const sig = await connection.sendTransaction(transaction, {
         maxRetries: 5,
         minContextSlot,
     });
@@ -64,7 +64,7 @@ async function createAndSendV0Tx(
 
     // * Step 5 - Confirm Transaction
     const confirmation = await connection.confirmTransaction({
-        signature: txid,
+        signature: sig,
         blockhash: blockhash,
         lastValidBlockHeight: lastValidBlockHeight,
     });
@@ -73,9 +73,9 @@ async function createAndSendV0Tx(
     }
     console.log(
         "   🎉 - 5. Transaction succesfully confirmed!",
-        `https://explorer.solana.com/tx/${txid}?cluster=devnet`
+        `https://explorer.solana.com/tx/${sig}?cluster=devnet`
     );
-    return txid;
+    return sig;
 }
 
 export { createAndSendV0Tx };

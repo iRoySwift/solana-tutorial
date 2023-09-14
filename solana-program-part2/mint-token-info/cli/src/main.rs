@@ -1,8 +1,13 @@
 use borsh::{BorshDeserialize, BorshSerialize};
-use solana_program::pubkey::Pubkey;
+use solana_program::{
+    instruction::{self, AccountMeta},
+    pubkey::Pubkey,
+    system_program,
+};
 use solana_rpc_client::rpc_client::RpcClient;
-use solana_sdk::signature::Keypair;
+use solana_sdk::{signature::Keypair, signer::Signer, transaction};
 use std::str::FromStr;
+mod utils;
 
 const PROGRAM_ID: &str = "9eMNGtayMEuNkzfdUYSw8k9msaPhFJG9Bi75wGQDvddR";
 const MINT: &str = "Gir7LUMrsXHv5gGctKNp6th2Pj7j9qmYR1LSrsHS6Yaj";
@@ -33,7 +38,7 @@ pub struct ExtMint {
 }
 
 impl ExtMint {
-    pub const SEED_PREFIX: &str = "ext_mint1";
+    pub const SEED_PREFIX: &str = "ext_mint3";
 
     pub fn new(mint: String, name: String, symbol: String, icon: String) -> ExtMint {
         ExtMint {
@@ -45,7 +50,8 @@ impl ExtMint {
     }
 }
 
-fn main() {
+#[tokio::main]
+async fn main() {
     println!("start");
     // Step 1 连接到Solana网络 devnet
     let client = RpcClient::new(DEV_NET);
@@ -53,9 +59,9 @@ fn main() {
     // Step 2 创建者账号信息（private key）
     let program_id = Pubkey::from_str(PROGRAM_ID).unwrap();
     let mint = Pubkey::from_str(MINT).unwrap();
-    let _signer = Keypair::from_bytes(&PRIVATE_KEY).unwrap();
+    let signer = Keypair::from_bytes(&PRIVATE_KEY).unwrap();
 
-    let (gen_ext_mint_key, _bump) = Pubkey::find_program_address(
+    let (page_visits_pda, _bump) = Pubkey::find_program_address(
         &[
             ExtMint::SEED_PREFIX.as_bytes(),
             program_id.as_ref(),
@@ -64,9 +70,43 @@ fn main() {
         &program_id,
     );
 
-    println!("gen_ext_mint_key: {:?}", gen_ext_mint_key);
+    // 构建instructions
+    let ix = ExtMintInstruction::Mint {
+        name: String::from("SOLO"),
+        symbol: String::from("SOLO"),
+        icon: String::from("https://solo.com"),
+    };
 
-    let state = client.get_account(&gen_ext_mint_key).unwrap();
+    // *  Generate instruction
+    let ixs = instruction::Instruction::new_with_bytes(
+        program_id,
+        &ix.try_to_vec().unwrap(),
+        vec![
+            AccountMeta::new(page_visits_pda, false),
+            AccountMeta::new(mint, false),
+            AccountMeta::new(signer.pubkey(), true),
+            AccountMeta::new_readonly(system_program::ID, false),
+        ],
+    );
+
+    let sig = utils::create_and_send_tx(&signer, &client, ixs).await;
+    // // * Step 1 - Fetch Latest Blockhash
+    // let recent_blockhash = client.get_latest_blockhash().unwrap();
+
+    // // * Step 2 - Generate Transaction
+    // let txs = transaction::Transaction::new_signed_with_payer(
+    //     &[ixs],
+    //     Some(&signer.pubkey()),
+    //     &[&signer],
+    //     recent_blockhash,
+    // );
+
+    // // * Step 4 - Send our v0 transaction to the cluster
+    // let sig = client.send_and_confirm_transaction(&txs).unwrap();
+
+    println!("sig: {:#?}", sig);
+
+    let state = client.get_account(&page_visits_pda).unwrap();
     println!("state: {:?}", state);
     let extmint_info = ExtMint::try_from_slice(&state.data).unwrap();
     println!("extmint_info:{:#?}", extmint_info);

@@ -11,7 +11,7 @@ pub struct ExtMint {
 }
 
 impl ExtMint {
-    pub const SEED_PREFIX: &str = "ext_mint1";
+    pub const SEED_PREFIX: &str = "ext_mint3";
 
     pub fn new(mint: String, name: String, symbol: String, icon: String) -> ExtMint {
         ExtMint {
