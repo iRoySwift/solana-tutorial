@@ -2140,6 +2140,7 @@ dependencies = [
  "solana-program",
  "solana-rpc-client",
  "solana-sdk",
+ "tokio",
 ]
 
 [[package]]
