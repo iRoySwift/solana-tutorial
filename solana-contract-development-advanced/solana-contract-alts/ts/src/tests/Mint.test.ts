@@ -76,7 +76,6 @@ describe("Test alts", () => {
         });
 
         // 创建ixs
-
         const lamports = await getMinimumBalanceForRentExemptMint(connection);
 
         const ixs = [

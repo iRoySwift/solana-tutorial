@@ -1,8 +1,9 @@
 [workspace]
 
 members = [
-    "hello-world/program",
-    "hello-world/cli",
+    "hello-world/native/program",
+    "hello-world/native/cli",
+    "hello-world/anchor/programs/*",
     "hello-world-counter/program",
     "hello-world-counter/cli",
     "hello-world-struct/program",

@@ -12,15 +12,15 @@ import {
  * 创建并发送版本化交易
  * @param signer                 Payer of the transaction and initialization fees
  * @param connection             Connection to use
- * @param txInstructions         Transaction Instruction Array
+ * @param ixs         Transaction Instruction Array
  * @param lookupTableAccount     Address Lookup Table Account
  * @returns                      Promise Transaction signature as base-58 encoded string
  */
 async function createAndSendV0Tx(
     signer: Signer,
     connection: Connection,
-    txInstructions: TransactionInstruction[],
-    sign: Signer[],
+    ixs: TransactionInstruction[],
+    signers?: Signer[],
     lookupTableAccount?: AddressLookupTableAccount
 ): Promise<TransactionSignature> {
     // * Step 1 - Fetch Latest Blockhash
@@ -40,20 +40,20 @@ async function createAndSendV0Tx(
         messageV0 = new TransactionMessage({
             payerKey: signer.publicKey,
             recentBlockhash: blockhash,
-            instructions: txInstructions,
+            instructions: ixs,
         }).compileToV0Message([lookupTableAccount]);
     } else {
         messageV0 = new TransactionMessage({
             payerKey: signer.publicKey,
             recentBlockhash: blockhash,
-            instructions: txInstructions,
+            instructions: ixs,
         }).compileToV0Message();
     }
     console.log("   ✅ - 2. Compiled transaction message");
-    const transaction = new VersionedTransaction(messageV0);
 
     // * Step 3 - Sign your transaction with the required `Signers`
-    transaction.sign(sign);
+    const transaction = new VersionedTransaction(messageV0);
+    signers && transaction.sign(signers);
     console.log("   ✅ - 3. Transaction Signed");
 
     // * Step 4 - Send our v0 transaction to the cluster
@@ -72,6 +72,7 @@ async function createAndSendV0Tx(
     if (confirmation.value.err) {
         throw new Error("   ❌ - 5. Transaction not confirmed.");
     }
+
     console.log(
         "   🎉 - 5. Transaction succesfully confirmed!",
         `https://explorer.solana.com/tx/${sig}?cluster=devnet`
