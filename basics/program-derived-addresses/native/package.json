@@ -5,7 +5,7 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
-        "test:pda": "ts-node ./src/tests/PDA.test.ts"
+        "test": "ts-node ./tests/PDA.test.ts"
     },
     "author": "",
     "license": "ISC",

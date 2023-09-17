@@ -13,7 +13,7 @@ import {
 import fs from "fs";
 import os from "os";
 import borsh from "borsh";
-import { createAndSendV0Tx } from "./../utils/sendTransaction.ts";
+import { createAndSendV0Tx } from "../utils/sendTransaction.ts";
 import assert from "assert";
 
 dotenv.config();
