@@ -5,7 +5,7 @@ use solana_program::{
     system_program,
 };
 use solana_rpc_client::rpc_client::RpcClient;
-use solana_sdk::{signature::Keypair, signer::Signer, transaction};
+use solana_sdk::{signature::Keypair, signer::Signer};
 use std::str::FromStr;
 mod utils;
 

@@ -178,8 +178,8 @@ describe("Test PDA", () => {
     it("Read page visits", async () => {
         const [pageVisitsPda, _] = derivePageVisitsPda(testUser.publicKey);
         const accountInfo: any = await connection.getAccountInfo(pageVisitsPda);
-        const readPageVisits: any = PageVisits.fromBuffer(accountInfo.data);
-        console.log(`Number of page visits: ${readPageVisits.page_visits}`);
-        assert.equal(readPageVisits.page_visits, 1);
+        const pageVisits: any = PageVisits.fromBuffer(accountInfo.data);
+        console.log(`Number of page visits: ${pageVisits.page_visits}`);
+        assert.equal(pageVisits.page_visits, 1);
     });
 });

@@ -8,7 +8,7 @@ members = [
     "hello-world-counter/cli",
     "hello-world-struct/program",
     "hello-world-notebook/program",
-    "basics/program-derived-addresses/anchor/program",
+    "basics/program-derived-addresses/anchor/programs/*",
     "basics/program-derived-addresses/native/program",
     "solana-program-part2/compare-ts-rust/cli",
     "solana-program-part2/invoke-helloworld/cli",
