@@ -13,7 +13,8 @@ members = [
     "solana-program-part2/compare-ts-rust/cli",
     "solana-program-part2/invoke-helloworld/cli",
     "solana-program-part2/invoke-helloworld/program",
-    "solana-program-part2/mint-token-info/cli",
-    "solana-program-part2/mint-token-info/program",
+    "solana-program-part2/mint-token-info/native/cli",
+    "solana-program-part2/mint-token-info/native/program",
+    "solana-program-part2/mint-token-info/anchor/programs/*",
 ]
 exclude = []
