@@ -4,7 +4,9 @@ import { MintTokenInfoAnchor } from "../target/types/mint_token_info_anchor";
 import * as splToken from "@coral-xyz/spl-token";
 import { assert } from "chai";
 
-const MINT = "Gir7LUMrsXHv5gGctKNp6th2Pj7j9qmYR1LSrsHS6Yaj";
+const MINT = new anchor.web3.PublicKey(
+    "HXRMWwHH5PNYbA3qKi4fJjTknfBQAW2QvTBEhPkvRssp"
+);
 
 describe("mint-token-info-anchor", () => {
     // Configure the client to use the local cluster.
@@ -17,7 +19,7 @@ describe("mint-token-info-anchor", () => {
 
     let testUser = anchor.web3.Keypair.generate();
 
-    it("Create a test user", async () => {
+    it("Created a test user", async () => {
         let ix = anchor.web3.SystemProgram.createAccount({
             fromPubkey: payer.publicKey,
             lamports:
@@ -46,8 +48,8 @@ describe("mint-token-info-anchor", () => {
         );
     }
 
-    it("create test user PDA!", async () => {
-        const [mintPda, _] = derivePageVisitsPda(testUser.publicKey);
+    it("created Mint PDA!", async () => {
+        const [mintPda, _] = derivePageVisitsPda(MINT);
 
         // Add your test here.
         const tx = await program.methods
@@ -59,8 +61,8 @@ describe("mint-token-info-anchor", () => {
             })
             .accounts({
                 mintPda,
-                // mint: new anchor.web3.PublicKey(MINT),
-                mint: testUser.publicKey,
+                mint: MINT,
+                // mint: testUser.publicKey,
                 payer: payer.publicKey,
                 tokenProgram: splToken.SPL_TOKEN_PROGRAM_ID,
                 systemProgram: anchor.web3.SystemProgram.programId,
@@ -69,8 +71,8 @@ describe("mint-token-info-anchor", () => {
             .rpc();
         console.log("Your transaction signature", tx);
     });
-    it("get mint token info", async () => {
-        const [mintPda, _] = derivePageVisitsPda(testUser.publicKey);
+    it("checked mint token info name", async () => {
+        const [mintPda, _] = derivePageVisitsPda(MINT);
         const extMint = program.account.extMint.fetch(mintPda);
         assert.equal((await extMint).name, "test");
     });

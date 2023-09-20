@@ -28,7 +28,9 @@ pub struct MintAccount<'info> {
         bump
     )]
     mint_pda: Account<'info, ExtMint>,
-    mint: SystemAccount<'info>,
+    mint: Account<'info, Mint>,
+    // testUser
+    // mint: SystemAccount<'info>,
     #[account(mut)]
     payer: Signer<'info>,
     token_program: Program<'info, Token>,
