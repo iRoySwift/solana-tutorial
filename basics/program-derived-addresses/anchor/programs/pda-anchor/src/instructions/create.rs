@@ -2,7 +2,7 @@ use anchor_lang::prelude::*;
 
 use crate::state::PageVisits;
 
-pub fn create_page_visits(ctx: Context<CreatePageVisits>) -> Result<()> {
+pub fn create_page_visits(_ctx: Context<CreatePageVisits>) -> Result<()> {
     // ctx.accounts.page_visits.set_inner(PageVisits::new(
     //     0,
     //     *ctx.bumps

@@ -6,10 +6,6 @@ describe("PDAs", () => {
     anchor.setProvider(provider);
     const payer = provider.wallet as anchor.Wallet;
     const program = anchor.workspace.PdaAnchor as anchor.Program<PdaAnchor>;
-    console.log(
-        "🚀 ~ file: test.ts:9 ~ describe ~ program:",
-        program.programId
-    );
 
     let testUser = anchor.web3.Keypair.generate();
 
