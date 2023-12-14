@@ -12,8 +12,8 @@ import {
 } from "@solana/web3.js";
 import fs from "fs";
 import os from "os";
-import borsh from "borsh";
-import { createAndSendV0Tx } from "../utils/sendTransaction.ts";
+import borsh, { deserialize, serialize } from "borsh";
+import { createAndSendV0Tx } from "../utils/sendTransaction";
 import assert from "assert";
 
 dotenv.config();
@@ -31,7 +31,7 @@ const PDA_PROGRAM_ID = "9eMNGtayMEuNkzfdUYSw8k9msaPhFJG9Bi75wGQDvddR";
 
 // Step 1 连接到Solana网络 devnet
 const devnet = clusterApiUrl("devnet");
-const connection = new Connection(process.env.DEVNET || devnet, "confirmed");
+const connection = new Connection(devnet, "confirmed");
 
 // Step 2 创建者账号信息（private key）
 // const signer = Keypair.fromSecretKey(new Uint8Array(secretKeyArray));
@@ -62,10 +62,10 @@ describe("Test PDA", () => {
     }
     class PageVisits extends Assignable {
         toBuffer(): Buffer {
-            return Buffer.from(borsh.serialize(PageVisitsSchema, this));
+            return Buffer.from(serialize(PageVisitsSchema, this));
         }
         static fromBuffer(buffer: Buffer) {
-            return borsh.deserialize(PageVisitsDeserialize, PageVisits, buffer);
+            return deserialize(PageVisitsDeserialize, PageVisits, buffer);
         }
     }
     const PageVisitsDeserialize = new Map([

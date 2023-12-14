@@ -25,11 +25,13 @@ impl Processor {
         let user = next_account_info(account_iter)?;
         let payer = next_account_info(account_iter).unwrap();
         let system_program = next_account_info(account_iter).unwrap();
-
-        if page_visible_pda.owner != program_id {
-            msg!("pad account does not have the correct program id");
-            return Err(PageVisitsError::NotOwnedByAccount.into());
-        }
+        msg!("pda{:?}", page_visible_pda);
+        msg!("program_id:{:?}", program_id);
+        msg!("system_program:{:?}", system_program);
+        // if page_visible_pda.owner != program_id {
+        //     msg!("pad account does not have the correct program id");
+        //     return Err(PageVisitsError::NotOwnedByAccount.into());
+        // }
 
         let space = page_visits.try_to_vec()?.len() as usize;
         let lamports = Rent::get()?.minimum_balance(space);

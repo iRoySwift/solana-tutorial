@@ -5,7 +5,7 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
-        "test": "ts-node ./tests/PDA.test.ts"
+        "test": "ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
     },
     "author": "",
     "license": "ISC",
