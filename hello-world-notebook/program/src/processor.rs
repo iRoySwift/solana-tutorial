@@ -90,8 +90,8 @@ impl Processor {
         let accounts_iter = &mut accounts.iter();
 
         // Get the account to say hello to
-        let account = next_account_info(accounts_iter)?;
         let greeting_account = next_account_info(accounts_iter)?;
+        let account = next_account_info(accounts_iter)?;
 
         // The account must be owned by the program in order to modify its data
         if greeting_account.owner != program_id {
